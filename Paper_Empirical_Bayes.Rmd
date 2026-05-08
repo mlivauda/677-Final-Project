@@ -112,7 +112,7 @@ These conversations helped me work through the Robbins' formula derivation step 
 
 ## 3b. A Concept You Taught Yourself
 
-Upon reading this text, I had never heard of Robbins' formula. During my reading, I felt like I understood the overall idea of the formula and its importance to the empirical Bayes methodology, but the details were not clear. I decided to take some time to really dive into it by writing out the derivation of the formula by hand, as well as learning how to implement it in R. 
+Upon reading this text, I had never heard of Robbins' formula. During my reading, I felt like I understood the overall idea of the formula and its importance to the empirical Bayes methodology, but the details were not clear. I decided to take some time to really dive into it by writing out the derivation of the formula by hand, as well as learning how to implement it in R, since it is the backbone of non-parametric empirical Bayes.
 \
 
 **What I Learned:**
@@ -190,13 +190,13 @@ Working through the derivation showed me that Robbins' Formula isn't magic; it's
 To truly master empirical Bayes, I would pursue these next steps with additional time. 
 \
 
-First, I would like to look further into the other topics within this chapter that I identified I only partially understood. I now feel as though I understand the non-parametric approach to empirical Bayes through Robbins' formula well, so I would like to explore the parametric approach. I will explore the parametric approach to Empirical Bayes by studying the Gamma-Poisson conjugate model, which is introduced in Chapter 6 of CASI as the parametric counterpart to Robbins' formula. I will work through the derivation of the posterior mean under a Gamma prior, similar to how I methodically went through the steps for Robbins', verify that it produces the same result as Robbins' formula, and implement it on a concrete dataset. As a secondary source, I will reference Casella (1985), "An Introduction to Empirical Bayes Data Analysis" in The American Statistician.
+First, I would like to look further into the other topics within this chapter that I identified I only partially understood. I now feel as though I understand the non-parametric approach to empirical Bayes through Robbins' formula well, so I would like to explore the parametric approach. I will explore the parametric approach to Empirical Bayes by studying the Gamma-Poisson conjugate model, which is introduced in Chapter 6 of CASI as the parametric counterpart to Robbins' formula. I will work through the derivation of the posterior mean under a Gamma prior, similar to how I methodically went through the steps for Robbins', verify that it produces the same result as Robbins' formula, and implement it on a concrete dataset. As a secondary source, AI suggests reading Casella (1985), "An Introduction to Empirical Bayes Data Analysis" in The American Statistician.
 \
 
 Next, I would like to read and study the foundational Efron & Morris (1973) paper "Stein's Estimation Rule and Its Competitors" to understand how James-Stein shrinkage is reinterpreted as an empirical Bayes estimator under a normal prior and implement it on the baseball data. This would also give me the chance to look at how these methods perform on a more complex data set. For this topic of the James-Stein estimation, I can also reference Chapter 7 in CASI, which would also take me through the connection to Ridge regression. 
 \
 
-Lastly, another topic I was unclear about was the 'using data twice' concern. After a bit of research, I better understand that it is justified asymptotically and pragmatically rather than philosophically. However, I would like to explore this more carefully. Specifically, I want to understand the conditions under which the bias introduced by estimating the prior from data is limited, and what we sacrifice compared to a fully Bayesian approach. For this, I will investigate reading Carlin & Louis (2000), which directly addresses the double use of data and its consequences for uncertainty quantification, and Morris (1983) 'Parametric Empirical Bayes Inference' in JASA, which provides the theoretical justification for when marginal likelihood EB is valid.
+Lastly, another topic I was unclear about was the 'using data twice' concern. After a bit of research, I better understand that it is justified asymptotically and pragmatically rather than philosophically. However, I would like to explore this more carefully. Specifically, I want to understand the conditions under which the bias introduced by estimating the prior from data is limited, and what we sacrifice compared to a fully Bayesian approach. For this, AI suggests reading Carlin & Louis (2000), which directly addresses the double use of data and its consequences for uncertainty quantification, and Morris (1983) 'Parametric Empirical Bayes Inference' in JASA, which provides the theoretical justification for when marginal likelihood EB is valid.
 \
 
 Together, these topics will help me better understand empirical Bayes as not a philosophically clean Bayesian procedure, but as a principled frequentist approximation with known limitations.
@@ -227,7 +227,7 @@ I used Claude (Anthropic) to assist with the following in two different chats:
 
 - Working through the derivation of Robbins' formula step by step, asking questions at each stage to identify gaps in my understanding. My hand-written derivation notes were informed by this conversation, but working through each step myself led to a deeper understanding.
 
-- For reviewing and giving feedback on drafted sections of this paper. It was used during the planning and structural stages of the paper, including organizing Section 2b and the further study plan in Section 3c. Then, a second Claude conversation was used for paper review and feedback, including suggestions that led to revisions in sections 1b, 1c, 2c, and the transition between sections II and III.
+- Reviewing and giving feedback on drafted sections of this paper. It was used during the planning and structural stages of the paper, including organizing Section 2b and the further study plan in Section 3c. Then, a second Claude conversation was used for paper review and feedback, including suggestions that led to revisions in sections 1b, 1c, 2c, and the transition between sections II and III.
 
 **What I did:** I treated Claude as an interactive study partner rather than a content generator. I asked questions, pushed back, and used responses to direct further reading and thinking. I also used it to prompt me through the project stages step by step. I used it to help write the code portions.
 
