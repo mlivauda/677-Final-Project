@@ -159,10 +159,27 @@ results <- data.frame(
 ```
 
 ```{r, echo=FALSE}
-print(results)
+library(knitr)
+
+results_table <- data.frame(
+  "Observed Count" = 1:9,
+  "Robbins Estimate" = round(results$robbins_estimate, 3)
+)
+
+kable(results_table, 
+      col.names = c("Observed Count", "Robbins Estimate"),
+      caption = "Robbins' Formula Estimates for Shakespeare Vocabulary Data",
+      align = c("c", "c"))
+
+plot(results$observed_count, results$robbins_estimate,
+     log = "xy",
+     xlab = "Observed Count (log scale)",
+     ylab = "Robbins Estimate (log scale)",
+     main = "Shrinkage Effect: Robbins' Formula on Shakespeare Data")
+abline(0, 1, lty = 2) # 45 degree line = no shrinkage
 ```
 
-These results show the shrinkage that happens when you use the Robbins' formula. To estimate the true rate of these less frequently used words in Shakespeare, we borrow some information from the rest of the data and its distribution. For example, we see in the results that words observed only once (14,376 of them) get a Robbins estimate of 0.604, and words observed nine times (37) get a Robbins estimate of 8.81. The words that are seen more frequently get less shrinkage because they are more stable than words that appear infrequently, pulling the rarer observations more toward the mean of the distribution. The full code files for this process are in the GitHub repository.
+These results, visible in the table and the graph, show the shrinkage that happens when you use the Robbins' formula. To estimate the true rate of these less frequently used words in Shakespeare, we borrow some information from the rest of the data and its distribution. For example, we see in the results that words observed only once (14,376 of them) get a Robbins estimate of 0.604, and words observed nine times (37) get a Robbins estimate of 8.81. Generally, words seen more frequently get less shrinkage because they are more stable than words that appear infrequently. Rarer words get pulled more strongly toward the mean of the distribution. The graph shows a visual of this shrinkage, with most of the points falling below the dashed 45-degree line. The same pattern we see numerically is now visually present with the least frequent words falling further below the no-shrinkage line than the higher frequency words. The full code files for this process are in the GitHub repository.
 \
 
 Working through the derivation showed me that Robbins' Formula isn't magic; it's a natural consequence of Bayesian reasoning applied to the marginal likelihood. Implementing it in code with the Shakespeare example from the text showed how empirical frequencies translate to shrinkage estimates in practice. This helped me move from seeing this formula on faith to understanding why it works and what it is doing. 
@@ -212,7 +229,7 @@ I used Claude (Anthropic) to assist with the following in two different chats:
 
 - For reviewing and giving feedback on drafted sections of this paper. It was used during the planning and structural stages of the paper, including organizing Section 2b and the further study plan in Section 3c. Then, a second Claude conversation was used for paper review and feedback, including suggestions that led to revisions in sections 1b, 1c, 2c, and the transition between sections II and III.
 
-**What I did:** I treated Claude as an interactive study partner rather than a content generator. I asked questions, pushed back, and used responses to direct further reading and thinking. I also used it to prompt me through the project stages step by step. 
+**What I did:** I treated Claude as an interactive study partner rather than a content generator. I asked questions, pushed back, and used responses to direct further reading and thinking. I also used it to prompt me through the project stages step by step. I used it to help write the code portions.
 
 **My contribution:** All final writing, analysis, and reasoning in this paper are my own. I consulted AI for clarification and brainstorming, not for generating content. A few sentences may have come from my conversations, but I worked to edit the text to make sure it was accurate to my understanding of the project. 
 

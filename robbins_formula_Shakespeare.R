@@ -55,6 +55,33 @@ results <- data.frame(
 
 print(results)
 
+
+# Compute standard errors using CASI formula
+n <- sum(counts)  # total words in Shakespeare canon
+se <- numeric(9)
+
+for (x in 1:9) {
+  fx   <- f_hat[x]
+  fx1  <- f_hat[x + 1]
+  fx2  <- if (x + 2 <= length(f_hat)) f_hat[x + 2] else 0
+  
+  eb   <- (x + 1) * fx1 / fx          # Robbins' estimate
+  term <- (x + 1)^2 * fx2 / fx        # second moment term
+  se[x] <- sqrt((term - eb^2) / (n * fx))
+}
+
+# Plot with error bars
+plot(results$observed_count, results$robbins_estimate,
+     xlab = "Observed Count",
+     ylab = "Robbins Estimate",
+     main = "Robbins' Formula with Standard Errors: Shakespeare Data",
+     ylim = c(0, 12), pch = 16)
+abline(0, 1, lty = 2)
+arrows(results$observed_count, results$robbins_estimate - 2*se,
+       results$observed_count, results$robbins_estimate + 2*se,
+       length = 0.05, angle = 90, code = 3)
+
+
 # Interpretation: For words we observed exactly once (observed_count = 1),
 # Robbins' Formula gives us a shrinkage estimate of how many times 
 # we'd expect those words to appear if we had more Shakespeare text.
